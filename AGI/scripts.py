@@ -7,9 +7,9 @@ gene_txt_path = r"/home/f1_u1/sungmin/courses/AGI/genes.txt"
 template_path = r"/home/f1_u1/sungmin/courses/AGI/base_template.js"
 output_dir = os.path.dirname(gene_txt_path)
 num_new_genes = 20
-mutation_std = 0.05
-big_mutation_std = 0.3
-big_mutation_prob = 0.1
+mutation_std = 0.5
+big_mutation_std = 0.8
+big_mutation_prob = 0.3
 
 # 중괄호 이스케이프 함수 (format 안전하게 사용하기 위해)
 def escape_curly_braces(js_code):
@@ -39,6 +39,8 @@ def mutate_gene(parent1, parent2, std=0.05, big_std=0.3, big_prob=0.1):
         else:
             noise = np.random.normal(0, std)
         new_val = min(1.0, max(0.0, g + noise))
+        if new_val == 0.0 or 1.0:
+            new_val = np.random.uniform(0,1)
         mutated.append(new_val)
     return mutated
 

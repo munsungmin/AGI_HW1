@@ -17,12 +17,12 @@ const weights = [
 ];
 
 // ==== 이 아래 파라미터는 자동으로 대체됨 ====
-const Gamma0 = 0.6199;
-const Gamma1 = 0.0000;
-const Gamma2 = 0.0000;
-const Gamma3 = 0.0000;
-const C2     = 0.3448;
-const C3     = 0.8088;
+const Gamma0 = 0.6936;
+const Gamma1 = 0.8523;
+const Gamma2 = 0.8770;
+const Gamma3 = 0.9100;
+const C2     = 0.7230;
+const C3     = 0.0814;
 let temp = 0;
 
 function Exp(phi , param) {

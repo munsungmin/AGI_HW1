@@ -1,5 +1,6 @@
  // Minimax algorithm implementation (depth 6)
- const MAX_DEPTH = 5;
+ // const MAX_DEPTH = 5;
+ const MAX_DEPTH = 6;
  let bestScore = -Infinity;
  let bestMove = null;
  const ai_player = player; 

@@ -15,13 +15,10 @@
      [-20, -40, -5, -5, -5, -5, -40, -20],
      [1200, -20, 20, 5, 5, 20, -20, 1200]
  ];
- Genes = [0.8, 0.05, 0.005, 0.2, 0.3, 0.8]
- const Gamma0 = 0.8
+
  const Gamma1 = 0.05
  const Gamma2 = 0.005
  const Gamma3 = 0.2
- const C2 = 0.3
- const C3 = 0.8
  let temp = 0 
 
 function Exp(phi , param)
@@ -58,31 +55,12 @@ function Gaussian(phi, param1 , param2)
                  } else if (board[row][col] === anti_player) {
                      score1 -= weights[row][col];
                  }
-                 if (board[row][col] !== player) continue;
-
-let flag = 1
-                for (const [dr, dc] of directions) {
-                    const nr = row + dr;
-                    const nc = col + dc;
-                    if (
-                        nr >= 0 && nr < BOARD_SIZE &&
-                        nc >= 0 && nc < BOARD_SIZE &&
-                        board[nr][nc] === EMPTY
-                    ) {
-                        flag =0
-                    }
-
-                }
-score3 += flag
                 turn += (board[row][col]>0);
              }
          }
-         const phi = (turn-4)/60; 
-score = Gaussian(phi, Gamma1, Gamma0) * score1*10/(turn) +  (1-Exp(phi,Gamma2)) * score2/10*C2 + Exp(phi, Gamma3) * score3*C3;
 
 
-
-         return score; 
+         return score1; 
      }
      
      // Get valid moves for current player

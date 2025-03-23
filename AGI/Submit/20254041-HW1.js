@@ -15,10 +15,14 @@
      [-20, -40, -5, -5, -5, -5, -40, -20],
      [1200, -20, 20, 5, 5, 20, -20, 1200]
  ];
+ 
+    const Gamma0 = (ai_player === BLACK) ? 0.3 : 0.5
+    const Gamma1 = (ai_player === BLACK) ? 0.3 : 0.2
+    const Gamma2 = 0.3
+    const Gamma3 = (ai_player === BLACK) ? 0.2 : 0.5
+    const C2 = 0.3
+    const C3 = 1.5
 
- const Gamma1 = 0.05
- const Gamma2 = 0.005
- const Gamma3 = 0.2
  let temp = 0 
 
 function Exp(phi , param)
@@ -75,11 +79,11 @@ score3 += flag
              }
          }
          const phi = (turn-4)/60; 
-score = Gaussian(phi, Gamma1, 0.6) * score1*10/(turn) +  (1-Exp(phi,Gamma2)) * score2/10 + Exp(phi, Gamma3) * score3;
+score = Gaussian(phi, Gamma1, Gamma0) * score1*10/(turn) +  (1-Exp(phi,Gamma2)) * score2/10*C2 + Exp(phi, Gamma3) * score3*C3;
 
 
 
-         return score1; 
+         return score; 
      }
      
      // Get valid moves for current player
